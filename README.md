@@ -1,1 +1,1 @@
-# bootstrap_ami
+# Bootstrap AMI
