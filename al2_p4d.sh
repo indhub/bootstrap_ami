@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# To use as user_data
+# wget https://raw.githubusercontent.com/indhub/bootstrap_ami/main/al2_p4d.sh
+# bash al2_p4d.sh
+
 exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
 exec 1>/root/user_data.log 2>&1
