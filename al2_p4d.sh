@@ -53,3 +53,11 @@ mkdir -p /enroot/runtime
 mkdir -p /enroot/cache
 chown ec2-user:ec2-user /enroot/runtime
 chown ec2-user:ec2-user /enroot/cache
+
+# Docker
+sudo yum update -y
+sudo amazon-linux-extras install docker -y
+sudo service docker start
+sudo systemctl enable docker
+sudo usermod -a -G docker ec2-user
+
