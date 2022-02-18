@@ -55,9 +55,15 @@ chown ec2-user:ec2-user /enroot/runtime
 chown ec2-user:ec2-user /enroot/cache
 
 # Docker
-sudo yum update -y
-sudo amazon-linux-extras install docker -y
-sudo service docker start
-sudo systemctl enable docker
-sudo usermod -a -G docker ec2-user
+yum update -y
+amazon-linux-extras install docker -y
+service docker start
+systemctl enable docker
+usermod -a -G docker ec2-user
 
+# NVIDIA docker
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
+yum install nvidia-docker2 -y
+yum clean expire-cache
+systemctl restart docker
